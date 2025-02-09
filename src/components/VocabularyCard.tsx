@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { Alert, Card, Input, Spin } from "antd";
 import ollama from "ollama/browser";
@@ -6,6 +7,7 @@ import { LLM_MODEL } from "@/lib/constants";
 
 interface VocabularyCardProps {
   word: string;
+  getNextWord: () => string;
 }
 
 export default function VocabularyCard({ word }: VocabularyCardProps) {
@@ -24,8 +26,8 @@ export default function VocabularyCard({ word }: VocabularyCardProps) {
         Por favor, classifique a resposta do aluno com base no uso correto ou não da palavra na frase.
         Se ele cometeu algum erro de gramática ou ortografia, por favor, corrija-o.
         Retorne uma resposta como se estivesse falando diretamente com o aluno.
-        Se a resposta do aluno estiver correta, retorne a palavra "CORRECT" na primeira linha da sua resposta.
-        Se a resposta do aluno estiver incorreta, retorne a palavra "INCORRECT" na primeira linha da sua resposta.
+        Se a resposta do aluno estiver correta, retorne "CORRECT" na primeira linha da sua resposta.
+        Se a resposta do aluno estiver incorreta, retorne "INCORRECT" na primeira linha da sua resposta.
 
         A palavra: ${word}
         A resposta do aluno: ${answer}

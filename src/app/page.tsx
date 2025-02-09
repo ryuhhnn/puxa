@@ -1,7 +1,8 @@
 "use client";
 
 import "@ant-design/v5-patch-for-react-19";
-import { Button, List } from "antd";
+import { Button, List, Radio } from "antd";
+import type { CheckboxGroupProps } from "antd/es/checkbox";
 
 const games = [
   {
@@ -18,6 +19,13 @@ const games = [
   },
 ];
 
+const options: CheckboxGroupProps<string>["options"] = [
+  { label: "Beginner", value: "beginner" },
+  { label: "Basic", value: "basic" },
+  { label: "Intermediate", value: "intermediate" },
+  { label: "Native", value: "native" },
+];
+
 export default function Home() {
   return (
     <main>
@@ -26,7 +34,16 @@ export default function Home() {
         dataSource={games}
         renderItem={(game, i) => (
           <List.Item key={i}>
-            <Button type="link" href={game.url}>{game.title}</Button>
+            <Button type="link" href={game.url}>
+              {game.title}{" "}
+              <Radio.Group
+                block
+                options={options}
+                defaultValue="basic"
+                optionType="button"
+                size="small"
+              />
+            </Button>
           </List.Item>
         )}
       ></List>

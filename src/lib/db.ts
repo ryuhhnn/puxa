@@ -1,7 +1,7 @@
-import sqlite3 from "sqlite3";
 import { open } from "sqlite";
+import { DB_DRIVER, DB_FILENAME } from "./constants";
 
 export default await open({
-  filename: "./data/puxa.db",
-  driver: sqlite3.Database,
+  driver: DB_DRIVER,
+  filename: DB_FILENAME,
 });
