@@ -7,10 +7,10 @@ import { LLM_MODEL } from "@/lib/constants";
 
 interface VocabularyCardProps {
   word: string;
-  getNextWord: () => string;
+  getNextWord: () => void;
 }
 
-export default function VocabularyCard({ word }: VocabularyCardProps) {
+export default function VocabularyCard({ word, getNextWord }: VocabularyCardProps) {
   const [answer, setAnswer] = useState("");
   const [solution, setSolution] = useState("");
   const [solutionIsCorrect, setSolutionIsCorrect] = useState(false);
@@ -45,7 +45,7 @@ export default function VocabularyCard({ word }: VocabularyCardProps) {
   return (
     <Card
       actions={[
-        <button>Skip</button>,
+        <button onClick={getNextWord}>Skip</button>,
         <button onClick={submitAnswer}>Submit</button>,
       ]}
     >

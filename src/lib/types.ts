@@ -4,3 +4,8 @@ export enum Difficulty {
   INTERMEDIATE = "INTERMEDIATE",
   NATIVE = "NATIVE",
 }
+
+export interface DictionaryEntry {
+  word: string;
+  frequency: number;
+}

@@ -1,28 +1,22 @@
 "use server";
 
-// import db from "@/lib/db";
-import VocabularyCard from "@/components/VocabularyCard";
-// import VocabularyFactory from "@/factories/VocabularyFactory";
+import VocabularyFactory from "@/factories/VocabularyFactory";
+import { DEFAULT_DIFFICULTY } from "@/lib/constants";
+import { Difficulty } from "@/lib/types";
+import Board from "./Board";
 
 export default async function Vocabulary({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: Difficulty | undefined }>;
 }) {
-  const { difficulty = "basic" } = await searchParams;
-  // const results = await db.all(
-  //   "SELECT word FROM vocabulary ORDER BY RANDOM() LIMIT 1"
-  // );
-  // const word = results[0].word;
-
-  const getNextWord = () => {
-    // return next word from factory
-  };
+  const { difficulty = DEFAULT_DIFFICULTY } = await searchParams;
+  const words = await VocabularyFactory(difficulty);
 
   return (
     <>
       <h1>Vocabulary</h1>
-      {/* <VocabularyCard word={word} getNextWord={getNextWord} /> */}
+      {words && <Board words={words} />}
     </>
   );
 }
