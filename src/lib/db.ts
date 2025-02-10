@@ -1,7 +1,7 @@
-import { open } from "sqlite";
-import { DB_DRIVER, DB_FILENAME } from "./constants";
+import { Database, open } from "sqlite";
+import { DB_FILENAME } from "./constants";
 
 export default await open({
-  driver: DB_DRIVER,
+  driver: Database,
   filename: DB_FILENAME,
 });
