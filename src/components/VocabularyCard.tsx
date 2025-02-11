@@ -27,8 +27,8 @@ export default function VocabularyCard({ word, getNextWord }: VocabularyCardProp
         Por favor, classifique a resposta do aluno com base no uso correto ou não da palavra na frase.
         Se ele cometeu algum erro de gramática ou ortografia, por favor, corrija-o.
         Retorne uma resposta como se estivesse falando diretamente com o aluno.
-        Se a resposta do aluno estiver correta, retorne "CORRECT" na primeira linha da sua resposta.
-        Se a resposta do aluno estiver incorreta, retorne "INCORRECT" na primeira linha da sua resposta.
+        Se a resposta do aluno estiver correta, retorne "TRUE" na primeira linha da sua resposta.
+        Se a resposta do aluno estiver incorreta, retorne "FALSE" na primeira linha da sua resposta.
 
         A palavra: ${word}
         A resposta do aluno: ${answer}
@@ -38,7 +38,7 @@ export default function VocabularyCard({ word, getNextWord }: VocabularyCardProp
     const solutionData = llm.response.split("\n");
     const solutionGrade = solutionData.shift();
 
-    setSolutionIsCorrect(!solutionGrade?.includes("INCORRECT"));
+    setSolutionIsCorrect(!solutionGrade?.includes("FALSE"));
     setSolution(solutionData.join("\n"));
     setLoading(false);
   };
