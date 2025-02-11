@@ -13,11 +13,11 @@ const games = [
     title: "Vocabulary",
     url: "/vocabulary",
   },
-  {
-    id: "short_story",
-    title: "Short Story",
-    url: "/short-story",
-  },
+  // {
+  //   id: "short_story",
+  //   title: "Short Story",
+  //   url: "/short-story",
+  // },
   {
     id: "everyday_scenario",
     title: "Everyday Scenario",

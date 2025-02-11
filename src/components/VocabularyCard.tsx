@@ -18,6 +18,7 @@ export default function VocabularyCard({ word, getNextWord }: VocabularyCardProp
 
   const submitAnswer = async () => {
     setLoading(true);
+
     const llm = await ollama.generate({
       model: LLM_MODEL,
       prompt: `

@@ -6,7 +6,7 @@ import VocabularyFactory from "@/factories/VocabularyFactory";
 import { DEFAULT_DIFFICULTY } from "@/lib/constants";
 import type { Difficulty } from "@/lib/types";
 
-export default async function Vocabulary({
+export default async function EverydayScenario({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: Difficulty | undefined }>;
@@ -16,8 +16,8 @@ export default async function Vocabulary({
 
   return (
     <GameLayout>
-      <h1>Vocabulary</h1>
-      {words && <Board words={words} />}
+      <h1>Everyday Scenario</h1>
+      <Board words={words} />
     </GameLayout>
   );
 }

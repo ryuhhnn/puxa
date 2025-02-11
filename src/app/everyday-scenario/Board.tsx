@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import VocabularyCard from "@/components/VocabularyCard";
+import ScenarioPrompt from "@/components/ScenarioPrompt";
 import { DictionaryEntry } from "@/lib/types";
 
 interface BoardProps {
@@ -32,5 +32,5 @@ export default function Board({ words }: BoardProps) {
     getNextWord();
   }, [words]);
 
-  return word && <VocabularyCard word={word} getNextWord={getNextWord} />;
+  return word && <ScenarioPrompt word={word} getNextWord={getNextWord} />;
 }
