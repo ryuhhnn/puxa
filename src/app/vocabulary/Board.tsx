@@ -3,6 +3,9 @@
 import { useState, useEffect, useCallback } from "react";
 import VocabularyCard from "@/components/VocabularyCard";
 import { DictionaryEntry } from "@/lib/types";
+import HomeLayout from "@/components/Layout";
+import SidebarTabs from "@/components/SidebarTabs";
+import Toolbar from "@/components/Toolbar";
 
 interface BoardProps {
   words: DictionaryEntry[];
@@ -32,5 +35,13 @@ export default function Board({ words }: BoardProps) {
     getNextWord();
   }, [words]);
 
-  return word && <VocabularyCard word={word} getNextWord={getNextWord} />;
+  return (
+    <HomeLayout
+      mainWindow={
+        word && <VocabularyCard word={word} getNextWord={getNextWord} />
+      }
+      sidebar={<SidebarTabs />}
+      toolbar={<Toolbar />}
+    />
+  );
 }

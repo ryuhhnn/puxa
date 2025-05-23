@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --surface-dark: #313715;
+  --surface-light: #dbebc0;
+  --accent-blue: #007ea7;
+}
+
 h1 {
   @apply text-5xl;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--surface-dark);
+}
+
+#home-layout {
+  display: flex;
+  gap: 30px;
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+}
+
+.sidebar {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  gap: 30px;
+}
+
+.main-window {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }

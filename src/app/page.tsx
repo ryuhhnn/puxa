@@ -1,77 +1,39 @@
 "use client";
 
 import "@ant-design/v5-patch-for-react-19";
-import { useState } from "react";
-import { Button, List, Radio } from "antd";
-import type { CheckboxGroupProps } from "antd/es/checkbox";
-import { Difficulty } from "@/lib/types";
-import { DEFAULT_DIFFICULTY } from "@/lib/constants";
 
-const games = [
-  {
-    id: "vocabulary",
-    title: "Vocabulary",
-    url: "/vocabulary",
-  },
-  // {
-  //   id: "short_story",
-  //   title: "Short Story",
-  //   url: "/short-story",
-  // },
-  {
-    id: "everyday_scenario",
-    title: "Everyday Scenario",
-    url: "/everyday-scenario",
-  },
-];
-
-const difficultyOptions: CheckboxGroupProps<string>["options"] = Object.values(
-  Difficulty
-).map((level) => ({
-  label: level.charAt(0) + level.substring(1).toLowerCase(),
-  value: level,
-}));
+import HomeLayout from "@/components/Layout";
+import SidebarTabs from "@/components/SidebarTabs";
+import Toolbar from "@/components/Toolbar";
+import Image from "next/image";
 
 export default function Home() {
-  const [difficultySettings, setDifficultySettings] = useState(
-    new Map<string, string>(games.map((game) => [game.id, DEFAULT_DIFFICULTY]))
-  );
-
   return (
-    <main>
-      <h1>Puxa!</h1>
-      <List
-        dataSource={games}
-        renderItem={(game, i) => (
-          <List.Item
-            key={i}
-            actions={[
-              <Radio.Group
-                block
-                options={difficultyOptions}
-                defaultValue={DEFAULT_DIFFICULTY}
-                optionType="button"
-                size="small"
-                onChange={(e) =>
-                  setDifficultySettings((previousSettings) => {
-                    const newSettings = new Map(previousSettings);
-                    newSettings.set(game.id, e.target.value);
-
-                    return newSettings;
-                  })
-                }
-              />,
-            ]}
+    <HomeLayout
+      mainWindow={
+        <>
+          <h1 className="text-center mb-2">Puxa!</h1>
+          <div
+            className="rounded-xl"
+            style={{
+              backgroundColor: "var(--accent-blue)",
+              width: 250,
+              height: 250,
+              margin: "0 auto",
+            }}
           >
-            <Button
-              type="link"
-              href={`${game.url}?difficulty=${difficultySettings.get(game.id)}`}
-            >
-              {game.title}{" "}
-            </Button>
-          </List.Item>
-        )}
-      ></List>
-    </main>
+            <Image
+              src="/puxa-icon.png"
+              alt=""
+              width={250}
+              height={250}
+              priority={true}
+            />
+          </div>
+        </>
+      }
+      sidebar={<SidebarTabs />}
+      toolbar={<Toolbar />}
+    />
   );
 }
